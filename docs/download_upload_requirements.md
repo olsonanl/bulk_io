@@ -2,15 +2,15 @@
 
 A user should be able to search for, upload, and download batch sets of data. It isnÕt clear if this needs to be restricted to the GUI, or that if a command line interface is acceptable. In either case, there will be a front end and back end component.  For our purposes here, we will be describing the back end components and the key interface(s) with the front end. 
 
-* We need to understand and document the interface between the front end and backend pieces in the architecture, and demonstrate the backend components through operational front end pieces.
+* We need to understand and document the interface between the front end and backend pieces in the architecture, and demonstrate the backend components through operational front end pieces. *
 
 If a user does want to download data, then presumably that user has some means to locally operate on that data, at which point we loose visibility into what is being done with the data.
 
-* We should not attempt to track what a user does with data once it is downloaded. We should however, know that the data was downloaded.
+* We should not attempt to track what a user does with data once it is downloaded. We should however, know that the data was downloaded. *
 
 In order for a user to be able to download a set of data, the user needs a means by which to identify the data to be downloaded. This brings into question the linkage between search and batch downloads (and uploads).
 
-* The batch download should have a uses relationship to search; however search should not have any relationship with download.
+* The batch download should have a uses relationship to search; however search should not have any relationship with download. *
 
 
 References from JIRA
