@@ -12,6 +12,8 @@ In order for a user to be able to download a set of data, the user needs a means
 
 *The batch download should have a uses relationship to search; however search should not have any relationship with download.*
 
+**Staging Area:**
+We may want to go to a staging area model where things can get into a temp area and the system can try to autodetect what type a file is.  That would also open the door to gridftp.  
 
 ### References from JIRA
 
