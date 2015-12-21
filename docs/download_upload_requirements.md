@@ -15,6 +15,24 @@ In order for a user to be able to download a set of data, the user needs a means
 **Staging Area:**
 We may want to go to a staging area model where things can get into a temp area and the system can try to autodetect what type a file is.  That would also open the door to gridftp.  (What requirement does this satisify, and can it be linked to a user request in JIRA)
 
+**System Requirements:**
+In the following set of specific requirements, the "user" can be either a human or another piece of software.
+
+A user should be able to abort an active transfer.
+
+Transfers should require authentication.
+
+A user should be able to delete a file.
+
+The user should be able to get detailed usage documentation.
+
+The user should be able to list the contents of the workspace.
+
+The user should be able to obtain the last modified date of a file.
+
+TODO: Finish this section 
+
+
 ### References from JIRA
 
 1. I would like to know if there is a way to download a table matching gene
