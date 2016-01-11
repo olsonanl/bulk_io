@@ -1,0 +1,73 @@
+Data types to test (from pull down "DATA TYPE" menu:
+1. Assembly
+2. Contigs
+3. Genome
+
+
+Network testing - various forms of failure will be tested that
+involve calls from the web browser client not reaching the running
+backend service. WHile many types of failures could be envisioned,
+we will start with three simple modes of failure.
+
+	A. The service is not running
+	B. The service is running, but there is a problem with the
+	   network interface, possibly a disconnected cable, a
+	   a hardware failure on the nic, ...
+	C. A routing problem, perhaps indicative of a problem with
+	   an ISP, home network device, ...
+
+
+*** A test is said to pass if the user is explicity informed that
+someting went wrong and that the upload and/or validation has
+failed.
+
+Method A and B will be influenced by the behavior of the proxy to
+some extent. This can be to some extent influenced by the
+proxy_read_timeout setting.
+
+
+Syntax:	proxy_read_timeout time;
+Default:	proxy_read_timeout 60s;
+Context:	http, server, location
+Defines a timeout for reading a response from the proxied server.
+The timeout is set only between two successive read operations, not
+for the transmission of the whole response. If the proxied server
+does not transmit anything within this time, the connection is
+closed.
+
+Syntax:		proxy_send_timeout time;
+Default:	proxy_send_timeout 60s;
+Context:	http, server, location
+Sets a timeout for transmitting a request to the proxied server. The
+timeout is set only between two successive write operations, not for
+the transmission of the whole request. If the proxied server does
+not receive anything within this time, the connection is closed.
+
+Current settings on the ci proxy:
+root@ci03:/etc/nginx# grep -r proxy_read_timeout *
+nginx.conf:        proxy_read_timeout 6000;
+root@ci03:/etc/nginx# grep -r proxy_send_timeout *
+root@ci03:/etc/nginx# 
+
+
+# Method A - performed on the service host
+
+$KB_TOP/services/$SERVICE/stop_service;
+sleep 20;
+$KB_TOP/services/$SERVICE/start_service;
+
+
+# Method B - performed on the service host and the proxy host
+
+/sbin/ifdown eth0;
+sleep 20;
+/sbin/ifup eth0;
+
+
+# Method C - performed on the service host and on the proxy host
+
+/sbin/route add 65.21.34.4 gw 127.0.0.1 lo
+
+
+client -> proxy -> service
+
