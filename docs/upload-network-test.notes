@@ -43,12 +43,20 @@ timeout is set only between two successive write operations, not for
 the transmission of the whole request. If the proxied server does
 not receive anything within this time, the connection is closed.
 
+Syntax:		proxy_connect_timeout time;
+Default:	proxy_connect_timeout 60s;
+Context:	http, server, location
+Defines a timeout for establishing a connection with a proxied
+server. It should be noted that this timeout cannot usually exceed
+75 seconds.
+
 Current settings on the ci proxy:
 root@ci03:/etc/nginx# grep -r proxy_read_timeout *
 nginx.conf:        proxy_read_timeout 6000;
 root@ci03:/etc/nginx# grep -r proxy_send_timeout *
 root@ci03:/etc/nginx# 
-
+root@ci03:/etc/nginx# grep -r proxy_connect_timeout *
+root@ci03:/etc/nginx# 
 
 # Method A - performed on the service host
 
