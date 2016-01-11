@@ -1,1 +1,3 @@
 Some test scripts that mirror the overall process of the web site uploads.
+
+These used to have the token hardcoded. I just pulled it out so they'll need to be added in by hand and/or initialized using the right mechanism. This is quick and dirty test code.
